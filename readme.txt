@@ -30,7 +30,7 @@ Installation guide:
 Quick guide to the installation and setup of CUDA/pyCUDA:
 
 - Install the pycuda toolkit (https://developer.nvidia.com/pycuda)
-- Install a recent version of visual studio ()
+- Install a recent version of visual studio (https://visualstudio.microsoft.com/it/downloads/)
 - Add to the system PATH environmental variable the visual studio installation subfolder containing the cl.exe file
 - Install pyCUDA either through pip (pip install pycuda), or in case of failure, through Christoph Golke's pre-compiled binary (https://www.lfd.uci.edu/~gohlke/pythonlibs/#pycuda)
 
@@ -40,7 +40,7 @@ Quick guide to the installation and setup of pyglfw:
 - download recent glfw binaries from the official repositiory (https://www.glfw.org/download.html)
 - copy the most appropriate binary dll either in the folder with the python code running, or in a folder from the system PATH environmental variable.
 
-
+Class reference:
 
 class py3dpointcloudslm.SlmControl (wavelength_nm, pixel_size_um, focal_mm, beam_radius_mm= None, screenID=None, active_area_coords=None, lut_edges=[0, 255])
 
