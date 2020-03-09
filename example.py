@@ -28,13 +28,13 @@ slm_to_pupil_magnification = 5.0/3.0
 # wavelength of the light source, in nanometers
 wavelength_nm=800
 
-# wavelength of the light source, in micrometers
+# slm pixel dimension, in micrometers
 slm_pixel_pitch_um = 9.2
 
 # screen number of the SLM
 screenID = 1
 
-# Radius of the laser beam at the SLM surface in millimeters
+# Radius of the gaussian laser beam at the SLM surface, in millimeters. Set to None to consider uniform intensity
 beam_radius_slm_mm = 6.0
 
 # focal length of the objective lens, in millimeters (equal to the tube lens focal length of the objective manufacturer,
