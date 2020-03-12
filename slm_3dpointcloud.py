@@ -5,9 +5,6 @@ import matplotlib.pyplot as plt
 import screeninfo
 import pyglfw.pyglfw as glfw
 from OpenGL.GL import *
-if (os.system("cl.exe")):
-    os.environ['PATH'] += ';' + \
-            r"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\bin\Hostx64\x64"
 import pycuda.driver as cuda_driver
 import pycuda.gl as cuda_gl
 from pycuda.compiler import SourceModule
