@@ -398,7 +398,7 @@ class SlmControl:
                                         block=(self.blocksize_forward, int(1024 / self.blocksize_forward), 1),
                                         grid=(1, int(SPOTS_N / (1024 / self.blocksize_forward)) + 1, 1))
             self.project_to_spots_end(spots_params_gpu, temp_real_gpu, temp_imag_gpu, int_pars_gpu,
-                                      block=(int(SPOTS_N / 2), 1, 1), grid=(2, 1, 1))
+                                      block=(int(SPOTS_N/2+1), 1, 1), grid=(2, 1, 1))
             spots_ints = spots_params_gpu.get()[:, 6]
             e = numpy.sum(spots_ints * spots_parameters[:, 4]) * SPOTS_N
             u = 1 - (numpy.amax(spots_ints) - numpy.amin(spots_ints)) / (
@@ -447,7 +447,7 @@ class SlmControl:
                                         block=(self.blocksize_forward, int(1024 / self.blocksize_forward), 1),
                                         grid=(1, int(SPOTS_N / (1024 / self.blocksize_forward)) + 1, 1))
             self.project_to_spots_end(spots_params_gpu, temp_real_gpu, temp_imag_gpu, int_pars_gpu,
-                                      block=(int(SPOTS_N / 2+1), 1, 1), grid=(2, 1, 1))
+                                      block=(int(SPOTS_N/2+1), 1, 1), grid=(2, 1, 1))
             spots_ints = spots_params_gpu.get()[:, 6]
             e = numpy.sum(spots_ints * spots_parameters[:, 4]) * SPOTS_N
             u = 1 - (numpy.amax(spots_ints) - numpy.amin(spots_ints)) / (
@@ -504,7 +504,7 @@ class SlmControl:
                                         block=(self.blocksize_forward, int(1024 / self.blocksize_forward), 1),
                                         grid=(1, int(SPOTS_N / (1024 / self.blocksize_forward)) + 1, 1))
             self.project_to_spots_end(spots_params_gpu, temp_real_gpu, temp_imag_gpu, int_pars_gpu,
-                                      block=(int(SPOTS_N / 2), 1, 1), grid=(2, 1, 1))
+                                      block=(int(SPOTS_N / 2 + 1), 1, 1), grid=(2, 1, 1))
             spots_ints = spots_params_gpu.get()[:, 6]
             e = numpy.sum(spots_ints * spots_parameters[:, 4]) * SPOTS_N
             u = 1 - (numpy.amax(spots_ints) - numpy.amin(spots_ints)) / (
@@ -561,7 +561,7 @@ class SlmControl:
                 self.project_to_spots_end(spots_params_gpu, temp_real_gpu, temp_imag_gpu, int_pars_gpu,
                                           block=(int(SPOTS_N/2+1), 1, 1), grid=(2, 1, 1))
                 self.update_weights(spots_params_gpu, int_pars_gpu,
-                                    block=(int(SPOTS_N / 2), 1, 1), grid=(2, 1, 1))
+                                    block=(int(SPOTS_N / 2+1), 1, 1), grid=(2, 1, 1))
                 self.project_to_slm(spots_params_gpu, self.XC_gpu, self.YC_gpu, self.holo_real_gpu,
                                     self.holo_imag_gpu, self.float_pars_gpu, int_pars_gpu,
                                     block=(1024, 1, 1), grid=(int(self.PUP_NP / 1024) + 1, 1, 1))
