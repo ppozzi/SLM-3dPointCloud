@@ -14,14 +14,14 @@ If you use this library for scientific research, please consider citing our work
 Hardware requirements:
 
 Requires a GPU supporting CUDA 3.0 or newer. Only supports SLMs directly connected to the GPU through VGA/DVI/HDMI/Displayport connection. Phase encoding must be linearly encoded on 8-bit grayscale.
- This unfortunately breaks compatibility with early Meadowlark SLMs, which encoded pixel voltages as a 16-bit numbers over the green and red pixel values without hardware linearization of phase.
+ This unfortunately breaks compatibility with early Meadowlark SLMs, which encoded pixel voltages as a 16-bit numbers over the green and red pixel values without hardware linearization of phase. We do not have access to one of these SLMs for testing, if you are interested in helping us implementing this functionality please contact us.
 The library is tested only on Windows 10, 64-bit, but should work with minor tweaks to the installation procedure on other windows versions and linux.
 
 Software requirements:
 
-numpy (install through pip install numpy)
-pyopengl (install through pip install pyopengl)
-screeninfo (install through pip install screeninfo)
+numpy (install through "pip install numpy")
+pyopengl (install through "pip install pyopengl")
+screeninfo (install through "pip install screeninfo")
 pycuda (further description below)
 pyglfw (further description below)
 
@@ -29,10 +29,10 @@ Installation guide:
 
 Quick guide to the installation and setup of CUDA/pyCUDA:
 
-- Install the pycuda toolkit (https://developer.nvidia.com/pycuda)
+- Install the cuda toolkit (https://developer.nvidia.com/cuda-downloads)
 - Install a recent version of visual studio (https://visualstudio.microsoft.com/it/downloads/)
-- Add to the system PATH environmental variable the visual studio installation subfolder containing the cl.exe file
-- Install pyCUDA either through pip (pip install pycuda), or in case of failure, through Christoph Golke's pre-compiled binary (https://www.lfd.uci.edu/~gohlke/pythonlibs/#pycuda)
+- Add to the system PATH environmental variable the location of the file "cl.exe" within the visual studio installation folder. (beware, the path to the file itself is needed, not just the path to the folder containing the file.)
+- Install pyCUDA either through pip (pip install pycuda), or in case of failure, through Christoph Gohlke's pre-compiled binary (https://www.lfd.uci.edu/~gohlke/pythonlibs/#pycuda)
 
 Quick guide to the installation and setup of pyglfw:
 
@@ -62,7 +62,7 @@ screenID = None : int
 	The identification number of the computer screen output used for the SLM. If None, a dummy SLM window is opened on the main computer screen.
 
 active_area_coords=None : list of three ints, optional
-	optional pixel coordinates of the active subregion of the SLM, in case not the whole surface is to be used. the list must have structure [y,x,resolution], with y and x being the y and x coordinates of tghe top left corner of the subregion on the screen, and resolution being the diameter in pixels of the system pupil.
+	optional pixel coordinates of the active subregion of the SLM, in case not the whole surface is to be used. the list must have structure [y,x,resolution], with y and x being the y and x coordinates of the top left corner of the subregion on the screen, and resolution being the diameter in pixels of the system pupil.
 
 lut_edges=[0, 255] : list of ints, optional
 	screen grayscale values for pixel phase modulations of 0 and 2 pi. The library assumes the screen is calibrated to have a grayscale output linearly modulating the phase. these values can be used to set the grayscale interval between 0 and 2 pi.
@@ -130,4 +130,5 @@ set_phase(phase):
 	set on the hologram a known phase, instead of generating it from points coordinates computation.
         
 	parameters:
-		phase: 2-dimensional numpy array of floats. Input phase distribution, must have size equal to the pupil pixel diameter.
+	
+	phase: 2-dimensional numpy array of floats. Input phase distribution, must have size equal to the pupil pixel diameter.
