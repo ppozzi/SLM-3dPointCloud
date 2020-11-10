@@ -63,6 +63,7 @@ print("RS performance:")
 print("Computation time: "+str(performance["Time"]))
 print("Efficiency: "+str(performance["Efficiency"]))
 print("Uniformity: "+str(performance["Uniformity"]))
+print("Variance: "+str(performance["Variance"]))
 print("\n")
 
 # Test the WGS performance
@@ -71,6 +72,7 @@ print("WGS performance, 10 iterations:")
 print("Computation time: "+str(performance["Time"]))
 print("Efficiency: "+str(performance["Efficiency"]))
 print("Uniformity: "+str(performance["Uniformity"]))
+print("Variance: "+str(performance["Variance"]))
 print("\n")
 
 # Test the CS-WGS performance
@@ -79,6 +81,7 @@ print("CS-WGS performance, 10 iterations, 16x compression:")
 print("Computation time: "+str(performance["Time"]))
 print("Efficiency: "+str(performance["Efficiency"]))
 print("Uniformity: "+str(performance["Uniformity"]))
+print("Variance: "+str(performance["Variance"]))
 print("\n")
 
 # Show a live rotating grid. get_perf is set to false for maximum live performance
