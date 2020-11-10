@@ -76,7 +76,7 @@ rs(spots_coords, spots_ints, get_perf=False):
 
 	spots_coords: Nx3 numpy array. Desired x,y and z coordinates, in micrometers of the N spots in the point cloud
 	spots_ints: numpy array. Target intensities of the point cloud spots
-	get_perf=False: boolean. If True, the function returns the computation time, efficiency and uniformity of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
+	get_perf=False: boolean. If True, the function returns the computation time, efficiency, uniformity and variance of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
 
 
 gs(spots_coords, spots_ints, iterations, get_perf=False):
@@ -87,7 +87,7 @@ gs(spots_coords, spots_ints, iterations, get_perf=False):
 	spots_coords: Nx3 numpy array. Desired x,y and z coordinates, in micrometers of the N spots in the point cloud
 	spots_ints: numpy array. Target intensities of the point cloud spots
 	iterations: int. number of algorithm iterations
-	get_perf=False: boolean. If True, the function returns the computation time, efficiency and uniformity of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
+	get_perf=False: boolean. If True, the function returns the computation time, efficiency, uniformity and variance of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
 
 
 wgs(spots_coords, spots_ints, iterations, get_perf=False):
@@ -98,7 +98,7 @@ wgs(spots_coords, spots_ints, iterations, get_perf=False):
 	spots_coords: Nx3 numpy array. Desired x,y and z coordinates, in micrometers of the N spots in the point cloud
 	spots_ints: numpy array. Target intensities of the point cloud spots
 	iterations: int. number of algorithm iterations
-	get_perf=False: boolean. If True, the function returns the computation time, efficiency and uniformity of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
+	get_perf=False: boolean. If True, the function returns the computation time, efficiency, uniformity and variance of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
 
 
 cs_gs(spots_coords, spots_ints, iterations, comression, get_perf=False):
@@ -110,7 +110,7 @@ cs_gs(spots_coords, spots_ints, iterations, comression, get_perf=False):
 	spots_ints: numpy array. Target intensities of the point cloud spots
 	iterations: int. number of algorithm iterations
 	compression: float. Compression factor in pupil sensing. Must be >0.0 and <1.0.
-	get_perf=False: boolean. If True, the function returns the computation time, efficiency and uniformity of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
+	get_perf=False: boolean. If True, the function returns the computation time, efficiency, uniformity and variance of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
 
 cs_wgs(spots_coords, spots_ints, iterations, comression, get_perf=False):
 	compute and project an hologram generating a 3d point cloud using the compressed sensing weighted Gerchberg-Saxton algorithm.
@@ -121,7 +121,7 @@ cs_wgs(spots_coords, spots_ints, iterations, comression, get_perf=False):
 	spots_ints: numpy array. Target intensities of the point cloud spots
 	iterations: int. number of algorithm iterations
 	compression: float. Compression factor in pupil sensing. Must be >0.0 and <1.0.
-	get_perf=False: boolean. If True, the function returns the computation time, efficiency and uniformity of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
+	get_perf=False: boolean. If True, the function returns the computation time, efficiency, uniformity and variance of the hologram. Computation of the performance will require extra time, only set to True for diagnostics/benchmarking. 
 
 get_phase():
         returns the hologram phase as a 2D numpy array.
