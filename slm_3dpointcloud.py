@@ -7,7 +7,7 @@ import pyglfw.pyglfw as glfw
 from OpenGL.GL import *
 import pycuda.driver as cuda_driver
 import pycuda.gl as cuda_gl
-from pycuda.compiler import SourceModule
+from pycuda.compiler import SourceModule, DEFAULT_NVCC_FLAGS
 from pycuda import gpuarray
 
 cuda_code = """ 
@@ -272,7 +272,7 @@ class SlmControl:
 
 
         import pycuda.gl.autoinit
-        self.mod = SourceModule(cuda_code)
+        self.mod = SourceModule(cuda_code, options=DEFAULT_NVCC_FLAGS)
         self.project_to_slm = self.mod.get_function("project_to_slm")
         self.project_to_spots_setup = self.mod.get_function("project_to_spots_setup")
         self.project_to_spots_end = self.mod.get_function("project_to_spots_end")
@@ -354,9 +354,12 @@ class SlmControl:
             self.project_to_spots_end(spots_params_gpu, temp_real_gpu, temp_imag_gpu, int_pars_gpu,
                                       block=(int(SPOTS_N/2+1), 1, 1), grid=(2, 1, 1))
             spots_ints = spots_params_gpu.get()[:,6]
-            return {"Time": T, "Efficiency": numpy.sum(spots_ints/spots_parameters[:, 4]/SPOTS_N),
-                    "Uniformity": 1-(numpy.amax(spots_ints)-numpy.amin(spots_ints))/(
-                            numpy.amax(spots_ints)+numpy.amin(spots_ints))}
+            e=numpy.sum(spots_ints/spots_parameters[:, 4]/SPOTS_N)
+            u=1-(numpy.amax(spots_ints)-numpy.amin(spots_ints))/(
+                            numpy.amax(spots_ints)+numpy.amin(spots_ints))
+            m=numpy.mean(spots_ints)
+            v=numpy.mean((spots_ints/m-1)**2)
+            return {"Time": T, "Efficiency": e,"Uniformity": u, "Variance": v}
 
     def gs(self, spots_coords, spots_ints, iterations, get_perf=False):
         t=time.perf_counter()
@@ -403,7 +406,9 @@ class SlmControl:
             e = numpy.sum(spots_ints * spots_parameters[:, 4]) * SPOTS_N
             u = 1 - (numpy.amax(spots_ints) - numpy.amin(spots_ints)) / (
                     numpy.amax(spots_ints) + numpy.amin(spots_ints))
-            return {"Time": T, "Efficiency": e, "Uniformity": u}
+            m=numpy.mean(spots_ints)
+            v=numpy.mean((spots_ints/m-1)**2)
+            return {"Time": T, "Efficiency": e,"Uniformity": u, "Variance": v}
 
     def wgs(self, spots_coords, spots_ints, iterations, get_perf=False):
         t = time.perf_counter()
@@ -452,7 +457,9 @@ class SlmControl:
             e = numpy.sum(spots_ints * spots_parameters[:, 4]) * SPOTS_N
             u = 1 - (numpy.amax(spots_ints) - numpy.amin(spots_ints)) / (
                     numpy.amax(spots_ints) + numpy.amin(spots_ints))
-            return {"Time": T, "Efficiency": e, "Uniformity": u}
+            m=numpy.mean(spots_ints)
+            v=numpy.mean((spots_ints/m-1)**2)
+            return {"Time": T, "Efficiency": e,"Uniformity": u, "Variance": v}
 
     def cs_gs(self, spots_coords, spots_ints, iterations, comp, get_perf=False):
         t = time.perf_counter()
@@ -509,7 +516,9 @@ class SlmControl:
             e = numpy.sum(spots_ints * spots_parameters[:, 4]) * SPOTS_N
             u = 1 - (numpy.amax(spots_ints) - numpy.amin(spots_ints)) / (
                     numpy.amax(spots_ints) + numpy.amin(spots_ints))
-            return {"Time": T, "Efficiency": e, "Uniformity": u}
+            m=numpy.mean(spots_ints)
+            v=numpy.mean((spots_ints/m-1)**2)
+            return {"Time": T, "Efficiency": e,"Uniformity": u, "Variance": v}
 
     def cs_wgs(self, spots_coords, spots_ints, iterations, comp, get_perf=False):
         t = time.perf_counter()
@@ -580,7 +589,9 @@ class SlmControl:
             e=numpy.sum(spots_ints*spots_parameters[:, 4])*SPOTS_N
             u=1 - (numpy.amax(spots_ints) - numpy.amin(spots_ints)) / (
                     numpy.amax(spots_ints) + numpy.amin(spots_ints))
-            return {"Time": T,"Efficiency": e,"Uniformity": u}
+            m=numpy.mean(spots_ints)
+            v=numpy.mean((spots_ints/m-1)**2)
+            return {"Time": T, "Efficiency": e,"Uniformity": u, "Variance": v}
 
     def wait_gpu(self):
         self.float_pars_gpu.get()
