@@ -217,6 +217,10 @@ def gauss(coords,I,off,x0,y0,w0_x,w0_y):
 class SlmControl:
     def __init__(self,  wavelength_nm, pixel_size_um, focal_mm, beam_radius_mm= None,
                  screenID=None, active_area_coords=None, lut_edges=[0, 255]):
+        print("""Thanks for using SLM-3dPointCloud.
+Library openly available for non-commercial use at https://github.com/ppozzi/SLM-3dPointCloud.
+If used for academic purposes, please consider citing the appropriate literature (https://doi.org/10.3389/fncel.2021.609505, https://doi.org/10.3390/mps2010002))""")
+
         self.screenID = screenID
         if self.screenID is not None:
             self.screenresolution = (screeninfo.get_monitors()[self.screenID].height,
