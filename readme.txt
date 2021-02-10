@@ -1,6 +1,7 @@
 Python library for generating 3d point cloud holograms, with phase only spatial light modulators, in real time through a GPU implementation of 5 algorithms (Random superposition, Gerchberg-Saxton, weighted Gerchberg-Saxton, compressed sensing Gerchberg-Saxton, compressed sensing weighted Gerchberg-Saxton).
 
-The algorithms are described in our paper ((https://doi.org/10.3390/mps2010002). A second paper, specifically describing this GPU implementation is currently under review.
+The GPU implementation of the algorithm is discussed in our publication  "Real time generation of three dimensional patterns for multiphoton stimulation" (https://doi.org/10.3389/fncel.2021.609505 , https://www.frontiersin.org/articles/10.3389/fncel.2021.609505/full). A previous publication describes the algorithms in detail ((https://doi.org/10.3390/mps2010002).
+
 Extremely quick summary of the publications:
 
 - RS: fast computation, low quality holograms
