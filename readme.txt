@@ -8,7 +8,7 @@ Extremely quick summary of the publications:
 - GS: slow computation, high efficiency holograms
 - WGS: slow computation, high uniformity holograms
 - CS-GS: faster version of GS, may require some tweaking of the compression parameter for optimal performance.
-- CS-WGS: faster version of GS, may require some tweaking of the compression parameter for optimal performance.
+- CS-WGS: faster version of WGS, may require some tweaking of the compression parameter for optimal performance.
 
 If you use this library for scientific research, please consider citing our work. Any use of this code for distribution of closed-source commercial software is prohibited by the license.
 
