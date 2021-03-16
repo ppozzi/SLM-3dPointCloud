@@ -51,7 +51,7 @@ wavelength_nm : float
 	wavelength of the laser source employed.
 
 pixel_size_um : float
-	pixel pitch of the slm in micrometers. If using a system of more than one lens, report the size at the actual pupil of the final focusing lens (e.g. the microscope objective for optogenetics or optical trapping applications), considering  the maginification of other lenses.
+	pixel pitch of the slm in micrometers. If using a system of more than one lens, report the size at the actual pupil of the final focusing lens (e.g. the microscope objective for optogenetics or optical trapping applications), considering  the magnification of other lenses.
 
 focal_mm : float
 	focal length of the focusing lens, in mm.
