@@ -32,8 +32,15 @@ Quick guide to the installation and setup of CUDA/pyCUDA:
 
 - Install the cuda toolkit (https://developer.nvidia.com/cuda-downloads)
 - Install a recent version of visual studio (https://visualstudio.microsoft.com/it/downloads/)
-- Add to the system PATH environmental variable the location of the file "cl.exe" within the visual studio installation folder. (beware, the path to the file itself is needed, not just the path to the folder containing the file.)
-- Install pyCUDA either through pip (pip install pycuda), or in case of failure, through Christoph Gohlke's pre-compiled binary (https://www.lfd.uci.edu/~gohlke/pythonlibs/#pycuda)
+- Add to the system PATH environmental variable the location of the file "cl.exe" within the visual studio installation folder. (beware, the path to the file itself is needed, not just the path to the folder containing the file.).
+If on runtime the interpreter still complains about missing cl.exe file in your system path, add to your code the following lines:
+
+import os
+if (os.system("cl.exe")):
+    os.environ['PATH'] += ';' + r"path\to\your\cl.exe\folder"
+
+- On Windows, install pipwin (pip install pipwin), and then use it to install pycuda (pipwin install pycuda).
+Alternatively use pip to install pycuda through Christoph Gohlke's pre-compiled binary (https://www.lfd.uci.edu/~gohlke/pythonlibs/#pycuda)
 
 Quick guide to the installation and setup of pyglfw:
 
