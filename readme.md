@@ -39,8 +39,8 @@ The library requires the following python packages:
 
 ## Quick guide to the installation and setup of CUDA/pyCUDA:
 
-- Install the cuda toolkit ([https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)), as of May 2023, CUDA 15 is required, as CUDA 16 is not supported by PyCUDA yet.
-- Install a recent version of visual studio ([https://visualstudio.microsoft.com/it/downloads/](https://visualstudio.microsoft.com/it/downloads/)), as of May 2023, visual studio 2019 (with the C++ framework) is required, as CUDA 15 does not support Visual studio 2022.
+- Install the cuda toolkit ([https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)), as of August 2023, CUDA 11.5 is required, as CUDA 12 is not supported by PyCUDA yet.
+- Install visual studio 2019 (with the C++ framework and windows SDK) ([https://visualstudio.microsoft.com/it/downloads/](https://visualstudio.microsoft.com/it/downloads/)). As of August 2023 more recent version of visual studio do not work, as CUDA 11 does not support Visual studio 2022.
 - Add to the system PATH environmental variable the location of the file "cl.exe" within the visual studio installation folder. (beware, the path to the file itself is needed, not just the path to the folder containing the file.).
 If on runtime the interpreter still complains about missing cl.exe file in your system path, add to your code the following lines:
 
